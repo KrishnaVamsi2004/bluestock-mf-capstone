@@ -1,0 +1,814 @@
+Last login: Tue Jun  2 13:43:00 on ttys000
+krishnavamsibommireddy@MacBook-Air ~ % ls
+Applications	Documents	IdeaProjects	Movies		Pictures	vamsi.txt
+Desktop		Downloads	Library		Music		Public
+krishnavamsibommireddy@MacBook-Air ~ % cd Desktop 
+krishnavamsibommireddy@MacBook-Air Desktop % mkdir bluestock_mf_capstone
+cd bluestock_mf_capstone
+krishnavamsibommireddy@MacBook-Air bluestock_mf_capstone % mkdir -p data/raw
+mkdir -p data/processed
+mkdir -p data/db
+mkdir notebooks
+mkdir scripts
+mkdir sql
+mkdir dashboard
+mkdir reports
+krishnavamsibommireddy@MacBook-Air bluestock_mf_capstone % ls
+dashboard	data		notebooks	reports		scripts		sql
+krishnavamsibommireddy@MacBook-Air bluestock_mf_capstone % python3 -m venv venv
+krishnavamsibommireddy@MacBook-Air bluestock_mf_capstone % source venv/bin/activate
+(venv) krishnavamsibommireddy@MacBook-Air bluestock_mf_capstone % pip install pandas numpy matplotlib seaborn plotly sqlalchemy requests scipy jupyter
+Collecting pandas
+  Using cached pandas-3.0.3-cp314-cp314-macosx_11_0_arm64.whl.metadata (79 kB)
+Collecting numpy
+  Using cached numpy-2.4.6-cp314-cp314-macosx_14_0_arm64.whl.metadata (6.6 kB)
+Collecting matplotlib
+  Using cached matplotlib-3.10.9-cp314-cp314-macosx_11_0_arm64.whl.metadata (52 kB)
+Collecting seaborn
+  Using cached seaborn-0.13.2-py3-none-any.whl.metadata (5.4 kB)
+Collecting plotly
+  Using cached plotly-6.7.0-py3-none-any.whl.metadata (8.6 kB)
+Collecting sqlalchemy
+  Using cached sqlalchemy-2.0.50-cp314-cp314-macosx_11_0_arm64.whl.metadata (9.5 kB)
+Collecting requests
+  Using cached requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+Collecting scipy
+  Using cached scipy-1.17.1-cp314-cp314-macosx_14_0_arm64.whl.metadata (62 kB)
+Collecting jupyter
+  Using cached jupyter-1.1.1-py2.py3-none-any.whl.metadata (2.0 kB)
+Collecting python-dateutil>=2.8.2 (from pandas)
+  Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting contourpy>=1.0.1 (from matplotlib)
+  Using cached contourpy-1.3.3-cp314-cp314-macosx_11_0_arm64.whl.metadata (5.5 kB)
+Collecting cycler>=0.10 (from matplotlib)
+  Using cached cycler-0.12.1-py3-none-any.whl.metadata (3.8 kB)
+Collecting fonttools>=4.22.0 (from matplotlib)
+  Using cached fonttools-4.63.0-cp314-cp314-macosx_10_15_universal2.whl.metadata (118 kB)
+Collecting kiwisolver>=1.3.1 (from matplotlib)
+  Using cached kiwisolver-1.5.0-cp314-cp314-macosx_11_0_arm64.whl.metadata (5.1 kB)
+Collecting packaging>=20.0 (from matplotlib)
+  Using cached packaging-26.2-py3-none-any.whl.metadata (3.5 kB)
+Collecting pillow>=8 (from matplotlib)
+  Using cached pillow-12.2.0-cp314-cp314-macosx_11_0_arm64.whl.metadata (8.8 kB)
+Collecting pyparsing>=3 (from matplotlib)
+  Using cached pyparsing-3.3.2-py3-none-any.whl.metadata (5.8 kB)
+Collecting narwhals>=1.15.1 (from plotly)
+  Using cached narwhals-2.22.0-py3-none-any.whl.metadata (15 kB)
+Collecting typing-extensions>=4.6.0 (from sqlalchemy)
+  Using cached typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting charset_normalizer<4,>=2 (from requests)
+  Using cached charset_normalizer-3.4.7-cp314-cp314-macosx_10_15_universal2.whl.metadata (40 kB)
+Collecting idna<4,>=2.5 (from requests)
+  Using cached idna-3.17-py3-none-any.whl.metadata (6.4 kB)
+Collecting urllib3<3,>=1.26 (from requests)
+  Using cached urllib3-2.7.0-py3-none-any.whl.metadata (6.9 kB)
+Collecting certifi>=2023.5.7 (from requests)
+  Using cached certifi-2026.5.20-py3-none-any.whl.metadata (2.5 kB)
+Collecting notebook (from jupyter)
+  Using cached notebook-7.5.6-py3-none-any.whl.metadata (10 kB)
+Collecting jupyter-console (from jupyter)
+  Using cached jupyter_console-6.6.3-py3-none-any.whl.metadata (5.8 kB)
+Collecting nbconvert (from jupyter)
+  Using cached nbconvert-7.17.1-py3-none-any.whl.metadata (8.4 kB)
+Collecting ipykernel (from jupyter)
+  Using cached ipykernel-7.2.0-py3-none-any.whl.metadata (4.5 kB)
+Collecting ipywidgets (from jupyter)
+  Using cached ipywidgets-8.1.8-py3-none-any.whl.metadata (2.4 kB)
+Collecting jupyterlab (from jupyter)
+  Using cached jupyterlab-4.5.7-py3-none-any.whl.metadata (16 kB)
+Collecting six>=1.5 (from python-dateutil>=2.8.2->pandas)
+  Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Collecting appnope>=0.1.2 (from ipykernel->jupyter)
+  Using cached appnope-0.1.4-py2.py3-none-any.whl.metadata (908 bytes)
+Collecting comm>=0.1.1 (from ipykernel->jupyter)
+  Using cached comm-0.2.3-py3-none-any.whl.metadata (3.7 kB)
+Collecting debugpy>=1.6.5 (from ipykernel->jupyter)
+  Using cached debugpy-1.8.21-cp314-cp314-macosx_15_0_universal2.whl.metadata (1.4 kB)
+Collecting ipython>=7.23.1 (from ipykernel->jupyter)
+  Using cached ipython-9.14.0-py3-none-any.whl.metadata (4.7 kB)
+Collecting jupyter-client>=8.8.0 (from ipykernel->jupyter)
+  Using cached jupyter_client-8.8.0-py3-none-any.whl.metadata (8.4 kB)
+Collecting jupyter-core!=6.0.*,>=5.1 (from ipykernel->jupyter)
+  Using cached jupyter_core-5.9.1-py3-none-any.whl.metadata (1.5 kB)
+Collecting matplotlib-inline>=0.1 (from ipykernel->jupyter)
+  Using cached matplotlib_inline-0.2.2-py3-none-any.whl.metadata (2.4 kB)
+Collecting nest-asyncio>=1.4 (from ipykernel->jupyter)
+  Using cached nest_asyncio-1.6.0-py3-none-any.whl.metadata (2.8 kB)
+Collecting psutil>=5.7 (from ipykernel->jupyter)
+  Using cached psutil-7.2.2-cp36-abi3-macosx_11_0_arm64.whl.metadata (22 kB)
+Collecting pyzmq>=25 (from ipykernel->jupyter)
+  Using cached pyzmq-27.1.0-cp312-abi3-macosx_10_15_universal2.whl.metadata (6.0 kB)
+Collecting tornado>=6.4.1 (from ipykernel->jupyter)
+  Using cached tornado-6.5.6-cp39-abi3-macosx_10_9_universal2.whl.metadata (2.8 kB)
+Collecting traitlets>=5.4.0 (from ipykernel->jupyter)
+  Using cached traitlets-5.15.0-py3-none-any.whl.metadata (10 kB)
+Collecting decorator>=5.1.0 (from ipython>=7.23.1->ipykernel->jupyter)
+  Using cached decorator-5.3.1-py3-none-any.whl.metadata (3.9 kB)
+Collecting ipython-pygments-lexers>=1.0.0 (from ipython>=7.23.1->ipykernel->jupyter)
+  Using cached ipython_pygments_lexers-1.1.1-py3-none-any.whl.metadata (1.1 kB)
+Collecting jedi>=0.18.2 (from ipython>=7.23.1->ipykernel->jupyter)
+  Using cached jedi-0.20.0-py2.py3-none-any.whl.metadata (23 kB)
+Collecting pexpect>4.6 (from ipython>=7.23.1->ipykernel->jupyter)
+  Using cached pexpect-4.9.0-py2.py3-none-any.whl.metadata (2.5 kB)
+Collecting prompt_toolkit<3.1.0,>=3.0.41 (from ipython>=7.23.1->ipykernel->jupyter)
+  Using cached prompt_toolkit-3.0.52-py3-none-any.whl.metadata (6.4 kB)
+Collecting pygments>=2.14.0 (from ipython>=7.23.1->ipykernel->jupyter)
+  Using cached pygments-2.20.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting stack_data>=0.6.0 (from ipython>=7.23.1->ipykernel->jupyter)
+  Using cached stack_data-0.6.3-py3-none-any.whl.metadata (18 kB)
+Collecting wcwidth (from prompt_toolkit<3.1.0,>=3.0.41->ipython>=7.23.1->ipykernel->jupyter)
+  Using cached wcwidth-0.7.0-py3-none-any.whl.metadata (36 kB)
+Collecting parso<0.9.0,>=0.8.6 (from jedi>=0.18.2->ipython>=7.23.1->ipykernel->jupyter)
+  Using cached parso-0.8.7-py2.py3-none-any.whl.metadata (8.2 kB)
+Collecting platformdirs>=2.5 (from jupyter-core!=6.0.*,>=5.1->ipykernel->jupyter)
+  Using cached platformdirs-4.10.0-py3-none-any.whl.metadata (5.5 kB)
+Collecting ptyprocess>=0.5 (from pexpect>4.6->ipython>=7.23.1->ipykernel->jupyter)
+  Using cached ptyprocess-0.7.0-py2.py3-none-any.whl.metadata (1.3 kB)
+Collecting executing>=1.2.0 (from stack_data>=0.6.0->ipython>=7.23.1->ipykernel->jupyter)
+  Using cached executing-2.2.1-py2.py3-none-any.whl.metadata (8.9 kB)
+Collecting asttokens>=2.1.0 (from stack_data>=0.6.0->ipython>=7.23.1->ipykernel->jupyter)
+  Using cached asttokens-3.0.1-py3-none-any.whl.metadata (4.9 kB)
+Collecting pure-eval (from stack_data>=0.6.0->ipython>=7.23.1->ipykernel->jupyter)
+  Using cached pure_eval-0.2.3-py3-none-any.whl.metadata (6.3 kB)
+Collecting widgetsnbextension~=4.0.14 (from ipywidgets->jupyter)
+  Using cached widgetsnbextension-4.0.15-py3-none-any.whl.metadata (1.6 kB)
+Collecting jupyterlab_widgets~=3.0.15 (from ipywidgets->jupyter)
+  Using cached jupyterlab_widgets-3.0.16-py3-none-any.whl.metadata (20 kB)
+Collecting async-lru>=1.0.0 (from jupyterlab->jupyter)
+  Using cached async_lru-2.3.0-py3-none-any.whl.metadata (7.6 kB)
+Collecting httpx<1,>=0.25.0 (from jupyterlab->jupyter)
+  Using cached httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+Collecting jinja2>=3.0.3 (from jupyterlab->jupyter)
+  Using cached jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting jupyter-lsp>=2.0.0 (from jupyterlab->jupyter)
+  Using cached jupyter_lsp-2.3.1-py3-none-any.whl.metadata (1.8 kB)
+Collecting jupyter-server<3,>=2.4.0 (from jupyterlab->jupyter)
+  Using cached jupyter_server-2.19.0-py3-none-any.whl.metadata (8.5 kB)
+Collecting jupyterlab-server<3,>=2.28.0 (from jupyterlab->jupyter)
+  Using cached jupyterlab_server-2.28.0-py3-none-any.whl.metadata (5.9 kB)
+Collecting notebook-shim>=0.2 (from jupyterlab->jupyter)
+  Using cached notebook_shim-0.2.4-py3-none-any.whl.metadata (4.0 kB)
+Collecting setuptools>=41.1.0 (from jupyterlab->jupyter)
+  Using cached setuptools-82.0.1-py3-none-any.whl.metadata (6.5 kB)
+Collecting anyio (from httpx<1,>=0.25.0->jupyterlab->jupyter)
+  Using cached anyio-4.13.0-py3-none-any.whl.metadata (4.5 kB)
+Collecting httpcore==1.* (from httpx<1,>=0.25.0->jupyterlab->jupyter)
+  Using cached httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+Collecting h11>=0.16 (from httpcore==1.*->httpx<1,>=0.25.0->jupyterlab->jupyter)
+  Using cached h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting argon2-cffi>=21.1 (from jupyter-server<3,>=2.4.0->jupyterlab->jupyter)
+  Using cached argon2_cffi-25.1.0-py3-none-any.whl.metadata (4.1 kB)
+Collecting jupyter-events>=0.11.0 (from jupyter-server<3,>=2.4.0->jupyterlab->jupyter)
+  Using cached jupyter_events-0.12.1-py3-none-any.whl.metadata (5.8 kB)
+Collecting jupyter-server-terminals>=0.4.4 (from jupyter-server<3,>=2.4.0->jupyterlab->jupyter)
+  Using cached jupyter_server_terminals-0.5.4-py3-none-any.whl.metadata (5.9 kB)
+Collecting nbformat>=5.3.0 (from jupyter-server<3,>=2.4.0->jupyterlab->jupyter)
+  Using cached nbformat-5.10.4-py3-none-any.whl.metadata (3.6 kB)
+Collecting prometheus-client>=0.9 (from jupyter-server<3,>=2.4.0->jupyterlab->jupyter)
+  Using cached prometheus_client-0.25.0-py3-none-any.whl.metadata (2.1 kB)
+Collecting send2trash>=1.8.2 (from jupyter-server<3,>=2.4.0->jupyterlab->jupyter)
+  Using cached send2trash-2.1.0-py3-none-any.whl.metadata (4.1 kB)
+Collecting terminado>=0.8.3 (from jupyter-server<3,>=2.4.0->jupyterlab->jupyter)
+  Using cached terminado-0.18.1-py3-none-any.whl.metadata (5.8 kB)
+Collecting websocket-client>=1.7 (from jupyter-server<3,>=2.4.0->jupyterlab->jupyter)
+  Using cached websocket_client-1.9.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting babel>=2.10 (from jupyterlab-server<3,>=2.28.0->jupyterlab->jupyter)
+  Using cached babel-2.18.0-py3-none-any.whl.metadata (2.2 kB)
+Collecting json5>=0.9.0 (from jupyterlab-server<3,>=2.28.0->jupyterlab->jupyter)
+  Using cached json5-0.14.0-py3-none-any.whl.metadata (36 kB)
+Collecting jsonschema>=4.18.0 (from jupyterlab-server<3,>=2.28.0->jupyterlab->jupyter)
+  Using cached jsonschema-4.26.0-py3-none-any.whl.metadata (7.6 kB)
+Collecting argon2-cffi-bindings (from argon2-cffi>=21.1->jupyter-server<3,>=2.4.0->jupyterlab->jupyter)
+  Using cached argon2_cffi_bindings-25.1.0-cp39-abi3-macosx_11_0_arm64.whl.metadata (7.4 kB)
+Collecting MarkupSafe>=2.0 (from jinja2>=3.0.3->jupyterlab->jupyter)
+  Using cached markupsafe-3.0.3-cp314-cp314-macosx_11_0_arm64.whl.metadata (2.7 kB)
+Collecting attrs>=22.2.0 (from jsonschema>=4.18.0->jupyterlab-server<3,>=2.28.0->jupyterlab->jupyter)
+  Using cached attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+Collecting jsonschema-specifications>=2023.03.6 (from jsonschema>=4.18.0->jupyterlab-server<3,>=2.28.0->jupyterlab->jupyter)
+  Using cached jsonschema_specifications-2025.9.1-py3-none-any.whl.metadata (2.9 kB)
+Collecting referencing>=0.28.4 (from jsonschema>=4.18.0->jupyterlab-server<3,>=2.28.0->jupyterlab->jupyter)
+  Using cached referencing-0.37.0-py3-none-any.whl.metadata (2.8 kB)
+Collecting rpds-py>=0.25.0 (from jsonschema>=4.18.0->jupyterlab-server<3,>=2.28.0->jupyterlab->jupyter)
+  Using cached rpds_py-2026.5.1-cp314-cp314-macosx_11_0_arm64.whl.metadata (4.1 kB)
+Collecting python-json-logger>=2.0.4 (from jupyter-events>=0.11.0->jupyter-server<3,>=2.4.0->jupyterlab->jupyter)
+  Using cached python_json_logger-4.1.0-py3-none-any.whl.metadata (3.7 kB)
+Collecting pyyaml>=5.3 (from jupyter-events>=0.11.0->jupyter-server<3,>=2.4.0->jupyterlab->jupyter)
+  Using cached pyyaml-6.0.3-cp314-cp314-macosx_11_0_arm64.whl.metadata (2.4 kB)
+Collecting rfc3339-validator (from jupyter-events>=0.11.0->jupyter-server<3,>=2.4.0->jupyterlab->jupyter)
+  Using cached rfc3339_validator-0.1.4-py2.py3-none-any.whl.metadata (1.5 kB)
+Collecting rfc3986-validator>=0.1.1 (from jupyter-events>=0.11.0->jupyter-server<3,>=2.4.0->jupyterlab->jupyter)
+  Using cached rfc3986_validator-0.1.1-py2.py3-none-any.whl.metadata (1.7 kB)
+Collecting fqdn (from jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.4.0->jupyterlab->jupyter)
+  Using cached fqdn-1.5.1-py3-none-any.whl.metadata (1.4 kB)
+Collecting isoduration (from jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.4.0->jupyterlab->jupyter)
+  Using cached isoduration-20.11.0-py3-none-any.whl.metadata (5.7 kB)
+Collecting jsonpointer>1.13 (from jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.4.0->jupyterlab->jupyter)
+  Using cached jsonpointer-3.1.1-py3-none-any.whl.metadata (2.4 kB)
+Collecting rfc3987-syntax>=1.1.0 (from jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.4.0->jupyterlab->jupyter)
+  Using cached rfc3987_syntax-1.1.0-py3-none-any.whl.metadata (7.7 kB)
+Collecting uri-template (from jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.4.0->jupyterlab->jupyter)
+  Using cached uri_template-1.3.0-py3-none-any.whl.metadata (8.8 kB)
+Collecting webcolors>=24.6.0 (from jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.4.0->jupyterlab->jupyter)
+  Using cached webcolors-25.10.0-py3-none-any.whl.metadata (2.2 kB)
+Collecting beautifulsoup4 (from nbconvert->jupyter)
+  Using cached beautifulsoup4-4.14.3-py3-none-any.whl.metadata (3.8 kB)
+Collecting bleach!=5.0.0 (from bleach[css]!=5.0.0->nbconvert->jupyter)
+  Using cached bleach-6.3.0-py3-none-any.whl.metadata (31 kB)
+Collecting defusedxml (from nbconvert->jupyter)
+  Using cached defusedxml-0.7.1-py2.py3-none-any.whl.metadata (32 kB)
+Collecting jupyterlab-pygments (from nbconvert->jupyter)
+  Using cached jupyterlab_pygments-0.3.0-py3-none-any.whl.metadata (4.4 kB)
+Collecting mistune<4,>=2.0.3 (from nbconvert->jupyter)
+  Using cached mistune-3.2.1-py3-none-any.whl.metadata (1.9 kB)
+Collecting nbclient>=0.5.0 (from nbconvert->jupyter)
+  Using cached nbclient-0.10.4-py3-none-any.whl.metadata (8.3 kB)
+Collecting pandocfilters>=1.4.1 (from nbconvert->jupyter)
+  Using cached pandocfilters-1.5.1-py2.py3-none-any.whl.metadata (9.0 kB)
+Collecting webencodings (from bleach!=5.0.0->bleach[css]!=5.0.0->nbconvert->jupyter)
+  Using cached webencodings-0.5.1-py2.py3-none-any.whl.metadata (2.1 kB)
+Collecting tinycss2<1.5,>=1.1.0 (from bleach[css]!=5.0.0->nbconvert->jupyter)
+  Using cached tinycss2-1.4.0-py3-none-any.whl.metadata (3.0 kB)
+Collecting fastjsonschema>=2.15 (from nbformat>=5.3.0->jupyter-server<3,>=2.4.0->jupyterlab->jupyter)
+  Using cached fastjsonschema-2.21.2-py3-none-any.whl.metadata (2.3 kB)
+Collecting lark>=1.2.2 (from rfc3987-syntax>=1.1.0->jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.4.0->jupyterlab->jupyter)
+  Using cached lark-1.3.1-py3-none-any.whl.metadata (1.8 kB)
+Collecting cffi>=2.0.0b1 (from argon2-cffi-bindings->argon2-cffi>=21.1->jupyter-server<3,>=2.4.0->jupyterlab->jupyter)
+  Using cached cffi-2.0.0-cp314-cp314-macosx_11_0_arm64.whl.metadata (2.6 kB)
+Collecting pycparser (from cffi>=2.0.0b1->argon2-cffi-bindings->argon2-cffi>=21.1->jupyter-server<3,>=2.4.0->jupyterlab->jupyter)
+  Using cached pycparser-3.0-py3-none-any.whl.metadata (8.2 kB)
+Collecting soupsieve>=1.6.1 (from beautifulsoup4->nbconvert->jupyter)
+  Using cached soupsieve-2.8.4-py3-none-any.whl.metadata (4.6 kB)
+Collecting arrow>=0.15.0 (from isoduration->jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.4.0->jupyterlab->jupyter)
+  Using cached arrow-1.4.0-py3-none-any.whl.metadata (7.7 kB)
+Collecting tzdata (from arrow>=0.15.0->isoduration->jsonschema[format-nongpl]>=4.18.0->jupyter-events>=0.11.0->jupyter-server<3,>=2.4.0->jupyterlab->jupyter)
+  Using cached tzdata-2026.2-py2.py3-none-any.whl.metadata (1.4 kB)
+Using cached pandas-3.0.3-cp314-cp314-macosx_11_0_arm64.whl (9.9 MB)
+Using cached numpy-2.4.6-cp314-cp314-macosx_14_0_arm64.whl (5.2 MB)
+Using cached matplotlib-3.10.9-cp314-cp314-macosx_11_0_arm64.whl (8.2 MB)
+Using cached seaborn-0.13.2-py3-none-any.whl (294 kB)
+Using cached plotly-6.7.0-py3-none-any.whl (9.9 MB)
+Using cached sqlalchemy-2.0.50-cp314-cp314-macosx_11_0_arm64.whl (2.2 MB)
+Using cached requests-2.34.2-py3-none-any.whl (73 kB)
+Using cached charset_normalizer-3.4.7-cp314-cp314-macosx_10_15_universal2.whl (309 kB)
+Using cached idna-3.17-py3-none-any.whl (65 kB)
+Using cached urllib3-2.7.0-py3-none-any.whl (131 kB)
+Using cached scipy-1.17.1-cp314-cp314-macosx_14_0_arm64.whl (20.3 MB)
+Using cached jupyter-1.1.1-py2.py3-none-any.whl (2.7 kB)
+Using cached certifi-2026.5.20-py3-none-any.whl (134 kB)
+Using cached contourpy-1.3.3-cp314-cp314-macosx_11_0_arm64.whl (273 kB)
+Using cached cycler-0.12.1-py3-none-any.whl (8.3 kB)
+Using cached fonttools-4.63.0-cp314-cp314-macosx_10_15_universal2.whl (2.9 MB)
+Using cached kiwisolver-1.5.0-cp314-cp314-macosx_11_0_arm64.whl (64 kB)
+Using cached narwhals-2.22.0-py3-none-any.whl (453 kB)
+Using cached packaging-26.2-py3-none-any.whl (100 kB)
+Using cached pillow-12.2.0-cp314-cp314-macosx_11_0_arm64.whl (4.7 MB)
+Using cached pyparsing-3.3.2-py3-none-any.whl (122 kB)
+Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+Using cached typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+Using cached ipykernel-7.2.0-py3-none-any.whl (118 kB)
+Using cached appnope-0.1.4-py2.py3-none-any.whl (4.3 kB)
+Using cached comm-0.2.3-py3-none-any.whl (7.3 kB)
+Using cached debugpy-1.8.21-cp314-cp314-macosx_15_0_universal2.whl (2.5 MB)
+Using cached ipython-9.14.0-py3-none-any.whl (627 kB)
+Using cached prompt_toolkit-3.0.52-py3-none-any.whl (391 kB)
+Using cached decorator-5.3.1-py3-none-any.whl (10 kB)
+Using cached ipython_pygments_lexers-1.1.1-py3-none-any.whl (8.1 kB)
+Using cached jedi-0.20.0-py2.py3-none-any.whl (4.9 MB)
+Using cached parso-0.8.7-py2.py3-none-any.whl (107 kB)
+Using cached jupyter_client-8.8.0-py3-none-any.whl (107 kB)
+Using cached jupyter_core-5.9.1-py3-none-any.whl (29 kB)
+Using cached matplotlib_inline-0.2.2-py3-none-any.whl (9.5 kB)
+Using cached nest_asyncio-1.6.0-py3-none-any.whl (5.2 kB)
+Using cached pexpect-4.9.0-py2.py3-none-any.whl (63 kB)
+Using cached platformdirs-4.10.0-py3-none-any.whl (22 kB)
+Using cached psutil-7.2.2-cp36-abi3-macosx_11_0_arm64.whl (129 kB)
+Using cached ptyprocess-0.7.0-py2.py3-none-any.whl (13 kB)
+Using cached pygments-2.20.0-py3-none-any.whl (1.2 MB)
+Using cached pyzmq-27.1.0-cp312-abi3-macosx_10_15_universal2.whl (1.3 MB)
+Using cached stack_data-0.6.3-py3-none-any.whl (24 kB)
+Using cached asttokens-3.0.1-py3-none-any.whl (27 kB)
+Using cached executing-2.2.1-py2.py3-none-any.whl (28 kB)
+Using cached tornado-6.5.6-cp39-abi3-macosx_10_9_universal2.whl (447 kB)
+Using cached traitlets-5.15.0-py3-none-any.whl (85 kB)
+Using cached ipywidgets-8.1.8-py3-none-any.whl (139 kB)
+Using cached jupyterlab_widgets-3.0.16-py3-none-any.whl (914 kB)
+Using cached widgetsnbextension-4.0.15-py3-none-any.whl (2.2 MB)
+Using cached jupyter_console-6.6.3-py3-none-any.whl (24 kB)
+Using cached jupyterlab-4.5.7-py3-none-any.whl (12.5 MB)
+Using cached httpx-0.28.1-py3-none-any.whl (73 kB)
+Using cached httpcore-1.0.9-py3-none-any.whl (78 kB)
+Using cached jupyter_server-2.19.0-py3-none-any.whl (392 kB)
+Using cached jupyterlab_server-2.28.0-py3-none-any.whl (59 kB)
+Using cached anyio-4.13.0-py3-none-any.whl (114 kB)
+Using cached argon2_cffi-25.1.0-py3-none-any.whl (14 kB)
+Using cached async_lru-2.3.0-py3-none-any.whl (8.4 kB)
+Using cached babel-2.18.0-py3-none-any.whl (10.2 MB)
+Using cached h11-0.16.0-py3-none-any.whl (37 kB)
+Using cached jinja2-3.1.6-py3-none-any.whl (134 kB)
+Using cached json5-0.14.0-py3-none-any.whl (36 kB)
+Using cached jsonschema-4.26.0-py3-none-any.whl (90 kB)
+Using cached attrs-26.1.0-py3-none-any.whl (67 kB)
+Using cached jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+Using cached jupyter_events-0.12.1-py3-none-any.whl (19 kB)
+Using cached jsonpointer-3.1.1-py3-none-any.whl (7.7 kB)
+Using cached jupyter_lsp-2.3.1-py3-none-any.whl (77 kB)
+Using cached jupyter_server_terminals-0.5.4-py3-none-any.whl (13 kB)
+Using cached markupsafe-3.0.3-cp314-cp314-macosx_11_0_arm64.whl (12 kB)
+Using cached nbconvert-7.17.1-py3-none-any.whl (261 kB)
+Using cached mistune-3.2.1-py3-none-any.whl (53 kB)
+Using cached bleach-6.3.0-py3-none-any.whl (164 kB)
+Using cached tinycss2-1.4.0-py3-none-any.whl (26 kB)
+Using cached nbclient-0.10.4-py3-none-any.whl (25 kB)
+Using cached nbformat-5.10.4-py3-none-any.whl (78 kB)
+Using cached fastjsonschema-2.21.2-py3-none-any.whl (24 kB)
+Using cached notebook_shim-0.2.4-py3-none-any.whl (13 kB)
+Using cached pandocfilters-1.5.1-py2.py3-none-any.whl (8.7 kB)
+Using cached prometheus_client-0.25.0-py3-none-any.whl (64 kB)
+Using cached python_json_logger-4.1.0-py3-none-any.whl (15 kB)
+Using cached pyyaml-6.0.3-cp314-cp314-macosx_11_0_arm64.whl (173 kB)
+Using cached referencing-0.37.0-py3-none-any.whl (26 kB)
+Using cached rfc3986_validator-0.1.1-py2.py3-none-any.whl (4.2 kB)
+Using cached rfc3987_syntax-1.1.0-py3-none-any.whl (8.0 kB)
+Using cached lark-1.3.1-py3-none-any.whl (113 kB)
+Using cached rpds_py-2026.5.1-cp314-cp314-macosx_11_0_arm64.whl (343 kB)
+Using cached send2trash-2.1.0-py3-none-any.whl (17 kB)
+Using cached setuptools-82.0.1-py3-none-any.whl (1.0 MB)
+Using cached terminado-0.18.1-py3-none-any.whl (14 kB)
+Using cached webcolors-25.10.0-py3-none-any.whl (14 kB)
+Using cached webencodings-0.5.1-py2.py3-none-any.whl (11 kB)
+Using cached websocket_client-1.9.0-py3-none-any.whl (82 kB)
+Using cached argon2_cffi_bindings-25.1.0-cp39-abi3-macosx_11_0_arm64.whl (31 kB)
+Using cached cffi-2.0.0-cp314-cp314-macosx_11_0_arm64.whl (181 kB)
+Using cached beautifulsoup4-4.14.3-py3-none-any.whl (107 kB)
+Using cached soupsieve-2.8.4-py3-none-any.whl (37 kB)
+Using cached defusedxml-0.7.1-py2.py3-none-any.whl (25 kB)
+Using cached fqdn-1.5.1-py3-none-any.whl (9.1 kB)
+Using cached isoduration-20.11.0-py3-none-any.whl (11 kB)
+Using cached arrow-1.4.0-py3-none-any.whl (68 kB)
+Using cached jupyterlab_pygments-0.3.0-py3-none-any.whl (15 kB)
+Using cached notebook-7.5.6-py3-none-any.whl (14.6 MB)
+Using cached pure_eval-0.2.3-py3-none-any.whl (11 kB)
+Using cached pycparser-3.0-py3-none-any.whl (48 kB)
+Using cached rfc3339_validator-0.1.4-py2.py3-none-any.whl (3.5 kB)
+Using cached tzdata-2026.2-py2.py3-none-any.whl (349 kB)
+Using cached uri_template-1.3.0-py3-none-any.whl (11 kB)
+Using cached wcwidth-0.7.0-py3-none-any.whl (110 kB)
+Installing collected packages: webencodings, pure-eval, ptyprocess, fastjsonschema, widgetsnbextension, websocket-client, webcolors, wcwidth, urllib3, uri-template, tzdata, typing-extensions, traitlets, tornado, tinycss2, soupsieve, six, setuptools, send2trash, rpds-py, rfc3986-validator, pyzmq, pyyaml, python-json-logger, pyparsing, pygments, pycparser, psutil, prometheus-client, platformdirs, pillow, pexpect, parso, pandocfilters, packaging, numpy, nest-asyncio, narwhals, mistune, MarkupSafe, lark, kiwisolver, jupyterlab_widgets, jupyterlab-pygments, jsonpointer, json5, idna, h11, fqdn, fonttools, executing, defusedxml, decorator, debugpy, cycler, comm, charset_normalizer, certifi, bleach, babel, attrs, async-lru, asttokens, appnope, terminado, stack_data, sqlalchemy, scipy, rfc3987-syntax, rfc3339-validator, requests, referencing, python-dateutil, prompt_toolkit, plotly, matplotlib-inline, jupyter-core, jinja2, jedi, ipython-pygments-lexers, httpcore, contourpy, cffi, beautifulsoup4, anyio, pandas, matplotlib, jupyter-server-terminals, jupyter-client, jsonschema-specifications, ipython, httpx, arrow, argon2-cffi-bindings, seaborn, jsonschema, isoduration, ipywidgets, ipykernel, argon2-cffi, nbformat, jupyter-console, nbclient, jupyter-events, nbconvert, jupyter-server, notebook-shim, jupyterlab-server, jupyter-lsp, jupyterlab, notebook, jupyter
+Successfully installed MarkupSafe-3.0.3 anyio-4.13.0 appnope-0.1.4 argon2-cffi-25.1.0 argon2-cffi-bindings-25.1.0 arrow-1.4.0 asttokens-3.0.1 async-lru-2.3.0 attrs-26.1.0 babel-2.18.0 beautifulsoup4-4.14.3 bleach-6.3.0 certifi-2026.5.20 cffi-2.0.0 charset_normalizer-3.4.7 comm-0.2.3 contourpy-1.3.3 cycler-0.12.1 debugpy-1.8.21 decorator-5.3.1 defusedxml-0.7.1 executing-2.2.1 fastjsonschema-2.21.2 fonttools-4.63.0 fqdn-1.5.1 h11-0.16.0 httpcore-1.0.9 httpx-0.28.1 idna-3.17 ipykernel-7.2.0 ipython-9.14.0 ipython-pygments-lexers-1.1.1 ipywidgets-8.1.8 isoduration-20.11.0 jedi-0.20.0 jinja2-3.1.6 json5-0.14.0 jsonpointer-3.1.1 jsonschema-4.26.0 jsonschema-specifications-2025.9.1 jupyter-1.1.1 jupyter-client-8.8.0 jupyter-console-6.6.3 jupyter-core-5.9.1 jupyter-events-0.12.1 jupyter-lsp-2.3.1 jupyter-server-2.19.0 jupyter-server-terminals-0.5.4 jupyterlab-4.5.7 jupyterlab-pygments-0.3.0 jupyterlab-server-2.28.0 jupyterlab_widgets-3.0.16 kiwisolver-1.5.0 lark-1.3.1 matplotlib-3.10.9 matplotlib-inline-0.2.2 mistune-3.2.1 narwhals-2.22.0 nbclient-0.10.4 nbconvert-7.17.1 nbformat-5.10.4 nest-asyncio-1.6.0 notebook-7.5.6 notebook-shim-0.2.4 numpy-2.4.6 packaging-26.2 pandas-3.0.3 pandocfilters-1.5.1 parso-0.8.7 pexpect-4.9.0 pillow-12.2.0 platformdirs-4.10.0 plotly-6.7.0 prometheus-client-0.25.0 prompt_toolkit-3.0.52 psutil-7.2.2 ptyprocess-0.7.0 pure-eval-0.2.3 pycparser-3.0 pygments-2.20.0 pyparsing-3.3.2 python-dateutil-2.9.0.post0 python-json-logger-4.1.0 pyyaml-6.0.3 pyzmq-27.1.0 referencing-0.37.0 requests-2.34.2 rfc3339-validator-0.1.4 rfc3986-validator-0.1.1 rfc3987-syntax-1.1.0 rpds-py-2026.5.1 scipy-1.17.1 seaborn-0.13.2 send2trash-2.1.0 setuptools-82.0.1 six-1.17.0 soupsieve-2.8.4 sqlalchemy-2.0.50 stack_data-0.6.3 terminado-0.18.1 tinycss2-1.4.0 tornado-6.5.6 traitlets-5.15.0 typing-extensions-4.15.0 tzdata-2026.2 uri-template-1.3.0 urllib3-2.7.0 wcwidth-0.7.0 webcolors-25.10.0 webencodings-0.5.1 websocket-client-1.9.0 widgetsnbextension-4.0.15
+
+[notice] A new release of pip is available: 26.1.1 -> 26.1.2
+[notice] To update, run: pip install --upgrade pip
+(venv) krishnavamsibommireddy@MacBook-Air bluestock_mf_capstone % pip freeze > requirements.txt
+(venv) krishnavamsibommireddy@MacBook-Air bluestock_mf_capstone % ls
+dashboard		notebooks		requirements.txt	sql
+data			reports			scripts			venv
+(venv) krishnavamsibommireddy@MacBook-Air bluestock_mf_capstone % touch scripts/data_ingestion.py
+(venv) krishnavamsibommireddy@MacBook-Air bluestock_mf_capstone % python scripts/data_ingestion.py
+
+============================================================
+Loading 01_fund_master.csv
+Shape:
+(40, 15)
+
+Dtypes:
+amfi_code               int64
+fund_house                str
+scheme_name               str
+category                  str
+sub_category              str
+plan                      str
+launch_date               str
+benchmark                 str
+expense_ratio_pct     float64
+exit_load_pct         float64
+min_sip_amount          int64
+min_lumpsum_amount      int64
+fund_manager              str
+risk_category             str
+sebi_category_code        str
+dtype: object
+
+Head:
+   amfi_code       fund_house  ... risk_category sebi_category_code
+0     119551  SBI Mutual Fund  ...      Moderate               EC01
+1     119552  SBI Mutual Fund  ...      Moderate               EC01
+2     119598  SBI Mutual Fund  ...     Very High               EC03
+3     119599  SBI Mutual Fund  ...     Very High               EC03
+4     119120  SBI Mutual Fund  ...           Low               DC02
+
+[5 rows x 15 columns]
+
+Missing Values:
+amfi_code             0
+fund_house            0
+scheme_name           0
+category              0
+sub_category          0
+plan                  0
+launch_date           0
+benchmark             0
+expense_ratio_pct     0
+exit_load_pct         0
+min_sip_amount        0
+min_lumpsum_amount    0
+fund_manager          0
+risk_category         0
+sebi_category_code    0
+dtype: int64
+
+Duplicates:
+0
+
+============================================================
+Loading 02_nav_history.csv
+Shape:
+(46000, 3)
+
+Dtypes:
+amfi_code      int64
+date             str
+nav          float64
+dtype: object
+
+Head:
+   amfi_code        date      nav
+0     119551  2022-01-03  54.3856
+1     119551  2022-01-04  54.3474
+2     119551  2022-01-05  54.6869
+3     119551  2022-01-06  55.4550
+4     119551  2022-01-07  55.3692
+
+Missing Values:
+amfi_code    0
+date         0
+nav          0
+dtype: int64
+
+Duplicates:
+0
+
+============================================================
+Loading 03_aum_by_fund_house.csv
+Shape:
+(90, 5)
+
+Dtypes:
+date                  str
+fund_house            str
+aum_lakh_crore    float64
+aum_crore           int64
+num_schemes         int64
+dtype: object
+
+Head:
+         date           fund_house  aum_lakh_crore  aum_crore  num_schemes
+0  2022-03-31      SBI Mutual Fund            6.05     605000          186
+1  2022-03-31  ICICI Prudential MF            4.65     465000          216
+2  2022-03-31     HDFC Mutual Fund            4.35     435000          195
+3  2022-03-31      Nippon India MF            2.70     270000          177
+4  2022-03-31    Kotak Mahindra MF            2.70     270000          168
+
+Missing Values:
+date              0
+fund_house        0
+aum_lakh_crore    0
+aum_crore         0
+num_schemes       0
+dtype: int64
+
+Duplicates:
+0
+
+============================================================
+Loading 04_monthly_sip_inflows.csv
+Shape:
+(48, 6)
+
+Dtypes:
+month                            str
+sip_inflow_crore               int64
+active_sip_accounts_crore    float64
+new_sip_accounts_lakh        float64
+sip_aum_lakh_crore           float64
+yoy_growth_pct               float64
+dtype: object
+
+Head:
+     month  sip_inflow_crore  active_sip_accounts_crore  new_sip_accounts_lakh  sip_aum_lakh_crore  yoy_growth_pct
+0  2022-01             11517                       4.91                   9.10                4.80             NaN
+1  2022-02             11438                       4.93                   8.20                4.85             NaN
+2  2022-03             12328                       5.09                  10.50                5.01             NaN
+3  2022-04             11863                       5.48                   9.52                5.12             NaN
+4  2022-05             12286                       5.55                   8.10                5.15             NaN
+
+Missing Values:
+month                         0
+sip_inflow_crore              0
+active_sip_accounts_crore     0
+new_sip_accounts_lakh         0
+sip_aum_lakh_crore            0
+yoy_growth_pct               12
+dtype: int64
+
+Duplicates:
+0
+
+============================================================
+Loading 05_category_inflows.csv
+Shape:
+(144, 3)
+
+Dtypes:
+month                   str
+category                str
+net_inflow_crore    float64
+dtype: object
+
+Head:
+     month         category  net_inflow_crore
+0  2024-04        Large Cap            2413.0
+1  2024-04          Mid Cap            3897.0
+2  2024-04        Small Cap            3533.0
+3  2024-04        Flexi Cap            4947.0
+4  2024-04  Large & Mid Cap            4214.0
+
+Missing Values:
+month               0
+category            0
+net_inflow_crore    0
+dtype: int64
+
+Duplicates:
+0
+
+============================================================
+Loading 06_industry_folio_count.csv
+Shape:
+(21, 6)
+
+Dtypes:
+month                      str
+total_folios_crore     float64
+equity_folios_crore    float64
+debt_folios_crore      float64
+hybrid_folios_crore    float64
+others_folios_crore    float64
+dtype: object
+
+Head:
+     month  total_folios_crore  equity_folios_crore  debt_folios_crore  hybrid_folios_crore  others_folios_crore
+0  2022-01               13.26                 9.28               1.86                 0.80                 1.33
+1  2022-04               13.91                 9.74               1.95                 0.83                 1.39
+2  2022-07               13.85                 9.69               1.94                 0.83                 1.38
+3  2022-10               14.12                 9.88               1.98                 0.85                 1.41
+4  2023-01               14.81                10.37               2.07                 0.89                 1.48
+
+Missing Values:
+month                  0
+total_folios_crore     0
+equity_folios_crore    0
+debt_folios_crore      0
+hybrid_folios_crore    0
+others_folios_crore    0
+dtype: int64
+
+Duplicates:
+0
+
+============================================================
+Loading 07_scheme_performance.csv
+Shape:
+(40, 19)
+
+Dtypes:
+amfi_code               int64
+scheme_name               str
+fund_house                str
+category                  str
+plan                      str
+return_1yr_pct        float64
+return_3yr_pct        float64
+return_5yr_pct        float64
+benchmark_3yr_pct     float64
+alpha                 float64
+beta                  float64
+sharpe_ratio          float64
+sortino_ratio         float64
+std_dev_ann_pct       float64
+max_drawdown_pct      float64
+aum_crore               int64
+expense_ratio_pct     float64
+morningstar_rating      int64
+risk_grade                str
+dtype: object
+
+Head:
+   amfi_code                                   scheme_name  ... morningstar_rating risk_grade
+0     119551     SBI Bluechip Fund - Regular Plan - Growth  ...                  4   Moderate
+1     119552      SBI Bluechip Fund - Direct Plan - Growth  ...                  3   Moderate
+2     119598    SBI Small Cap Fund - Regular Plan - Growth  ...                  5  Very High
+3     119599     SBI Small Cap Fund - Direct Plan - Growth  ...                  4  Very High
+4     119120  SBI Magnum Gilt Fund - Regular Plan - Growth  ...                  5        Low
+
+[5 rows x 19 columns]
+
+Missing Values:
+amfi_code             0
+scheme_name           0
+fund_house            0
+category              0
+plan                  0
+return_1yr_pct        0
+return_3yr_pct        0
+return_5yr_pct        0
+benchmark_3yr_pct     0
+alpha                 0
+beta                  0
+sharpe_ratio          0
+sortino_ratio         0
+std_dev_ann_pct       0
+max_drawdown_pct      0
+aum_crore             0
+expense_ratio_pct     0
+morningstar_rating    0
+risk_grade            0
+dtype: int64
+
+Duplicates:
+0
+
+============================================================
+Loading 08_investor_transactions.csv
+Shape:
+(32778, 13)
+
+Dtypes:
+investor_id               str
+transaction_date          str
+amfi_code               int64
+transaction_type          str
+amount_inr              int64
+state                     str
+city                      str
+city_tier                 str
+age_group                 str
+gender                    str
+annual_income_lakh    float64
+payment_mode              str
+kyc_status                str
+dtype: object
+
+Head:
+  investor_id transaction_date  amfi_code transaction_type  ...  gender annual_income_lakh payment_mode kyc_status
+0   INV003054       2024-01-01     119092              SIP  ...  Female               77.1          UPI   Verified
+1   INV002952       2024-01-01     148567       Redemption  ...    Male                7.1       Cheque   Verified
+2   INV003420       2024-01-01     118636              SIP  ...    Male               47.2      Mandate   Verified
+3   INV003436       2024-01-01     118634              SIP  ...  Female               54.4       Cheque    Pending
+4   INV004691       2024-01-01     119094          Lumpsum  ...    Male               14.5  Net Banking    Pending
+
+[5 rows x 13 columns]
+
+Missing Values:
+investor_id           0
+transaction_date      0
+amfi_code             0
+transaction_type      0
+amount_inr            0
+state                 0
+city                  0
+city_tier             0
+age_group             0
+gender                0
+annual_income_lakh    0
+payment_mode          0
+kyc_status            0
+dtype: int64
+
+Duplicates:
+0
+
+============================================================
+Loading 09_portfolio_holdings.csv
+Shape:
+(322, 8)
+
+Dtypes:
+amfi_code              int64
+stock_symbol             str
+stock_name               str
+sector                   str
+weight_pct           float64
+market_value_cr      float64
+current_price_inr    float64
+portfolio_date           str
+dtype: object
+
+Head:
+   amfi_code stock_symbol                stock_name  ... market_value_cr  current_price_inr  portfolio_date
+0     119551    POWERGRID    Power Grid Corporation  ...          737.09            6011.08      2025-12-31
+1     119551     HDFCBANK             HDFC Bank Ltd  ...           88.97            1074.65      2025-12-31
+2     119551       GRASIM     Grasim Industries Ltd  ...          208.45            5964.59      2025-12-31
+3     119551      DRREDDY  Dr. Reddy's Laboratories  ...          161.32            3748.82      2025-12-31
+4     119551   ASIANPAINT          Asian Paints Ltd  ...          725.90            1321.45      2025-12-31
+
+[5 rows x 8 columns]
+
+Missing Values:
+amfi_code            0
+stock_symbol         0
+stock_name           0
+sector               0
+weight_pct           0
+market_value_cr      0
+current_price_inr    0
+portfolio_date       0
+dtype: int64
+
+Duplicates:
+0
+
+============================================================
+Loading 10_benchmark_indices.csv
+Shape:
+(8050, 3)
+
+Dtypes:
+date               str
+index_name         str
+close_value    float64
+dtype: object
+
+Head:
+         date index_name  close_value
+0  2022-01-03    NIFTY50     17492.79
+1  2022-01-04    NIFTY50     17689.64
+2  2022-01-05    NIFTY50     17835.05
+3  2022-01-06    NIFTY50     17878.51
+4  2022-01-07    NIFTY50     17759.15
+
+Missing Values:
+date           0
+index_name     0
+close_value    0
+dtype: int64
+
+Duplicates:
+0
+(venv) krishnavamsibommireddy@MacBook-Air bluestock_mf_capstone % touch scripts/live_nav_fetch.py
+(venv) krishnavamsibommireddy@MacBook-Air bluestock_mf_capstone % python scripts/live_nav_fetch.py
+        scheme_name  scheme_code  latest_nav        date
+0      HDFC Top 100       125497   192.31950  01-06-2026
+1      SBI Bluechip       119551   104.70250  01-06-2026
+2    ICICI Bluechip       120503   103.09480  01-06-2026
+3  Nippon Large Cap       118632    97.19440  01-06-2026
+4     Axis Bluechip       119092  6156.75320  01-06-2026
+5    Kotak Bluechip       120841   246.98140  01-06-2026
+(venv) krishnavamsibommireddy@MacBook-Air bluestock_mf_capstone % ls data/raw
+01_fund_master.csv		05_category_inflows.csv		09_portfolio_holdings.csv
+02_nav_history.csv		06_industry_folio_count.csv	10_benchmark_indices.csv
+03_aum_by_fund_house.csv	07_scheme_performance.csv	live_nav.csv
+04_monthly_sip_inflows.csv	08_investor_transactions.csv
+(venv) krishnavamsibommireddy@MacBook-Air bluestock_mf_capstone % git init
+Initialized empty Git repository in /Users/krishnavamsibommireddy/Desktop/bluestock_mf_capstone/.git/
+(venv) krishnavamsibommireddy@MacBook-Air bluestock_mf_capstone % touch .gitignore
+(venv) krishnavamsibommireddy@MacBook-Air bluestock_mf_capstone % venv/
+__pycache__/
+.ipynb_checkpoints/
+*.db
+zsh: permission denied: venv/
+zsh: no such file or directory: __pycache__/
+zsh: no such file or directory: .ipynb_checkpoints/
+zsh: no matches found: *.db
+(venv) krishnavamsibommireddy@MacBook-Air bluestock_mf_capstone % nano .gitignore
+
+  UW PICO 5.09                                        File: .gitignore                                        Modified  
+
+venv/
+__pycache__/
+.ipynb_checkpoints/
+*.db
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+^G Get Help         ^O WriteOut         ^R Read File        ^Y Prev Pg          ^K Cut Text         ^C Cur Pos          
+^X Exit             ^J Justify          ^W Where is         ^V Next Pg          ^U UnCut Text       ^T To Spell        

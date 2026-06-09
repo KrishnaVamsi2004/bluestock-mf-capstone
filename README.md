@@ -200,6 +200,110 @@ Generated exploratory visualizations and business insights.
 
 ---
 
+# Day 4 – Performance Analytics
+
+## Overview
+
+Day 4 focused on evaluating mutual fund performance using return, risk, and benchmark-based analytics. Multiple performance metrics were computed for all 40 mutual fund schemes to identify high-performing funds and rank them using a composite scorecard.
+
+## Objectives
+
+* Calculate daily returns from NAV history
+* Compute CAGR for mutual fund schemes
+* Evaluate risk-adjusted performance using Sharpe Ratio
+* Measure downside risk using Sortino Ratio
+* Calculate Alpha and Beta against benchmark indices
+* Analyze Maximum Drawdown
+* Build a Fund Scorecard for ranking schemes
+* Compare top funds against benchmark indices
+
+## Datasets Used
+
+* 02_nav_history.csv
+* 07_scheme_performance.csv
+* 10_benchmark_indices.csv
+
+## Analytics Performed
+
+### Daily Returns
+
+Calculated daily percentage returns for all mutual fund schemes using NAV data.
+
+Formula:
+daily_return = (NAV_t / NAV_t-1) - 1
+
+### CAGR
+
+Computed annualized growth rates across fund history.
+
+Formula:
+CAGR = (Ending NAV / Beginning NAV)^(1/n) - 1
+
+### Sharpe Ratio
+
+Measured risk-adjusted returns using a 6.5% risk-free rate.
+
+Formula:
+Sharpe Ratio = (Rp - Rf) / Std(Rp) × √252
+
+### Sortino Ratio
+
+Evaluated returns relative to downside volatility.
+
+Formula:
+Sortino Ratio = (Rp - Rf) / Downside Deviation × √252
+
+### Alpha & Beta
+
+Calculated using linear regression against NIFTY100 benchmark returns.
+
+Outputs:
+
+* Alpha
+* Beta
+
+### Maximum Drawdown
+
+Measured the worst peak-to-trough decline for each scheme.
+
+Formula:
+Drawdown = NAV / Running_Max - 1
+
+### Fund Scorecard
+
+Created a composite ranking model using:
+
+* CAGR Rank
+* Sharpe Rank
+* Alpha Rank
+* Drawdown Rank
+
+## Deliverables
+
+### CSV Outputs
+
+* cagr_table.csv
+* sharpe_ratio.csv
+* sortino_ratio.csv
+* alpha_beta.csv
+* max_drawdown.csv
+* fund_scorecard.csv
+
+### Visualizations
+
+* benchmark_comparison.png
+
+## Results
+
+* Evaluated performance for 40 mutual fund schemes.
+* Generated risk and return rankings.
+* Built a composite scorecard for fund selection.
+* Compared top-performing funds with benchmark indices.
+
+## Status
+
+Day 4 completed successfully.
+
 ## Author
 
 Krishna Vamsi Bommireddy

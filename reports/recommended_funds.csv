@@ -1,0 +1,4 @@
+amfi_code,cagr_pct,sharpe_ratio,alpha,max_drawdown_pct,cagr_rank,sharpe_rank,alpha_rank,drawdown_rank,score,risk_category,scheme_name
+120843,30.91,1.307,0.2733,-12.97,6.0,2.0,5.0,13.0,6.55,Moderately High,Kotak Flexicap Fund - Regular - Growth
+148569,31.95,1.235,0.2827,-16.4,4.0,3.0,4.0,21.0,8.0,High,Mirae Asset Tax Saver Fund - Regular - Growth
+120505,32.83,1.18,0.2926,-18.19,1.0,5.0,3.0,25.0,8.4,High,ICICI Pru Midcap Fund - Regular - Growth

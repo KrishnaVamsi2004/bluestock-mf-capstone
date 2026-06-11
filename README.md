@@ -1,12 +1,28 @@
 # Mutual Fund Analytics Platform
 
-## Project Objective
+## Bluestock Fintech Capstone Project
 
-Build an end-to-end Mutual Fund Analytics Platform to analyze mutual fund performance, NAV trends, SIP inflows, AUM growth, portfolio holdings, investor behavior, and fund risk metrics using Python, SQL, SQLite, Power BI, and GitHub.
+### Author
+
+Krishna Vamsi Bommireddy
+
+### Project Duration
+
+01 June 2026 – 07 June 2026
 
 ---
 
-## Technology Stack
+# Project Objective
+
+Build an end-to-end Mutual Fund Analytics Platform to analyze mutual fund performance, NAV trends, SIP inflows, AUM growth, portfolio holdings, investor behavior, and fund risk metrics using Python, SQLite, Tableau/Power BI, and GitHub.
+
+The project covers the complete analytics lifecycle including data ingestion, cleaning, storage, performance analytics, investor analysis, dashboard development, and business reporting.
+
+---
+
+# Technology Stack
+
+## Programming & Analytics
 
 * Python
 * Pandas
@@ -14,19 +30,30 @@ Build an end-to-end Mutual Fund Analytics Platform to analyze mutual fund perfor
 * Matplotlib
 * Seaborn
 * Plotly
+* SciPy
+
+## Database
+
 * SQLite
 * SQLAlchemy
 * SQL
-* Git & GitHub
+
+## Visualization
+
+* Tableau
 * Power BI
+
+## Version Control
+
+* Git
+* GitHub
 
 ---
 
-## Project Structure
+# Project Structure
 
-```text
 bluestock_mf_capstone/
-│
+
 ├── data/
 │   ├── raw/
 │   ├── processed/
@@ -35,14 +62,22 @@ bluestock_mf_capstone/
 ├── notebooks/
 │   ├── 01_data_ingestion.ipynb
 │   ├── 02_data_cleaning.ipynb
-│   └── 03_eda_analysis.ipynb
+│   ├── 03_eda_analysis.ipynb
+│   ├── 04_performance_analytics.ipynb
+│   └── 05_advanced_analytics.ipynb
 │
 ├── scripts/
 │   ├── data_ingestion.py
 │   ├── data_cleaning.py
 │   ├── live_nav_fetch.py
 │   ├── load_to_sqlite.py
-│   └── day3_eda.py
+│   ├── day3_eda.py
+│   ├── day5_var_cvar.py
+│   ├── day5_rolling_sharpe.py
+│   ├── day5_cohort_analysis.py
+│   ├── day5_sip_continuity.py
+│   ├── day5_hhi.py
+│   └── recommender.py
 │
 ├── sql/
 │   ├── schema.sql
@@ -51,70 +86,85 @@ bluestock_mf_capstone/
 ├── dashboard/
 │
 ├── reports/
+│   ├── Final_Report.pdf
+│   ├── Bluestock_MF_Presentation.pptx
 │   ├── charts/
 │   └── data_dictionary.md
 │
-└── README.md
-```
+├── README.md
+└── run_pipeline.py
+
+---
+
+# Datasets Used
+
+| File                         | Description              |
+| ---------------------------- | ------------------------ |
+| 01_fund_master.csv           | Fund master information  |
+| 02_nav_history.csv           | Daily NAV history        |
+| 03_aum_by_fund_house.csv     | AMC AUM data             |
+| 04_monthly_sip_inflows.csv   | SIP inflow statistics    |
+| 05_category_inflows.csv      | Category-wise inflows    |
+| 06_industry_folio_count.csv  | Industry folio counts    |
+| 07_scheme_performance.csv    | Fund performance metrics |
+| 08_investor_transactions.csv | Investor transactions    |
+| 09_portfolio_holdings.csv    | Portfolio holdings       |
+| 10_benchmark_indices.csv     | Benchmark indices        |
 
 ---
 
 # Day 1 – Data Ingestion & Validation
 
-### Tasks Completed
+## Tasks Completed
 
 * Created project folder structure
 * Initialized Git repository
-* Connected project to GitHub repository
+* Connected project to GitHub
 * Installed project dependencies
-* Loaded all provided CSV datasets using Pandas
+* Loaded all datasets using Pandas
 * Performed dataset inspection
-* Verified shape, columns and datatypes
-* Integrated AMFI Live NAV API
-* Fetched live NAV data
-* Saved API output for analysis
-* Validated AMFI scheme codes
-* Generated data quality observations
+* Validated schema and datatypes
+* Integrated AMFI NAV API
+* Retrieved live NAV data
+* Saved API responses
+* Conducted data quality checks
 
-### Deliverables
+## Deliverables
 
 * requirements.txt
 * data_ingestion.py
 * live_nav_fetch.py
-* GitHub repository
-* Day 1 Git commit
+* GitHub Repository
 
 ---
 
 # Day 2 – Data Cleaning & Database Setup
 
-### Tasks Completed
+## Data Cleaning
 
-#### NAV History Cleaning
+### NAV History
 
-* Converted date columns to datetime
-* Sorted records by AMFI code and date
-* Removed duplicate records
-* Forward-filled missing NAV values
-* Validated NAV values
+* Date standardization
+* Duplicate removal
+* Missing NAV handling
+* Data validation
 
-#### Investor Transactions Cleaning
+### Investor Transactions
 
-* Standardized transaction types
-* Validated investment amounts
-* Corrected date formats
-* Verified KYC status values
+* Transaction standardization
+* Amount validation
+* KYC verification
+* Date cleaning
 
-#### Scheme Performance Cleaning
+### Scheme Performance
 
-* Validated return columns
-* Checked numeric consistency
-* Verified expense ratio ranges
-* Flagged anomalies
+* Metric validation
+* Range verification
+* Consistency checks
 
-#### Database Design
+## Database Design
 
-Created SQLite star schema:
+Created normalized star schema:
 
 * dim_fund
 * dim_date
@@ -123,30 +173,19 @@ Created SQLite star schema:
 * fact_performance
 * fact_aum
 
-#### Documentation
-
-* Created schema.sql
-* Created queries.sql
-* Created data_dictionary.md
-
-### Deliverables
+## Deliverables
 
 * Cleaned datasets
 * SQLite database
 * schema.sql
 * queries.sql
 * data_dictionary.md
-* Day 2 Git commit
 
 ---
 
-# Day 3 – Exploratory Data Analysis (EDA)
+# Day 3 – Exploratory Data Analysis
 
-### Tasks Completed
-
-Generated exploratory visualizations and business insights.
-
-### Charts Created
+## Charts Created
 
 1. AUM Growth by Fund House
 2. Monthly SIP Trend
@@ -154,133 +193,54 @@ Generated exploratory visualizations and business insights.
 4. Investor Age Distribution
 5. Investor Gender Distribution
 6. State-wise Investment Distribution
-7. City Tier Distribution (T30 vs B30)
-8. Industry Folio Growth Trend
-9. Equity vs Debt vs Hybrid Folio Growth
-10. Top Funds by 5-Year Returns
-11. Sector Allocation Donut Chart
+7. City Tier Distribution
+8. Industry Folio Growth
+9. Folio Category Comparison
+10. Top Funds by Returns
+11. Sector Allocation Chart
 12. Expense Ratio Distribution
 13. Risk Grade Distribution
 14. Morningstar Rating Distribution
 
-### Key Insights
+## Key Insights
 
-* SBI Mutual Fund maintains the highest AUM among major fund houses.
-* SIP inflows show consistent growth across the analysis period.
-* Equity categories dominate investor inflows.
-* Folio counts increased significantly from 2022 to 2025.
-* Portfolio allocations remain concentrated in key sectors.
-* Higher-rated funds generally demonstrate stronger historical performance.
-* Expense ratios remain within expected industry ranges.
+* SBI Mutual Fund maintains highest AUM.
+* SIP inflows show strong growth.
+* Equity categories dominate inflows.
+* Folio counts doubled from 2022 to 2025.
+* Portfolio holdings show sector concentration.
+* Higher-rated funds generally outperform peers.
 
-### Deliverables
+## Deliverables
 
-* 14 EDA charts
-* EDA scripts
-* Analytical insights
-* Visualization outputs saved in reports/charts
-* Day 3 Git commit
-
----
-
-## Current Progress
-
-### Completed
-
-* Day 1 – Data Ingestion
-* Day 2 – Data Cleaning & Database Setup
-* Day 3 – Exploratory Data Analysis
-
-### Upcoming
-
-* Day 4 – Performance Analytics
-* Day 5 – Advanced Analytics & Recommendation Engine
-* Day 6 – Power BI Dashboard Development
-* Day 7 – Final Report & Presentation
+* 14 EDA Charts
+* EDA Scripts
+* Analytical Insights
 
 ---
 
 # Day 4 – Performance Analytics
 
-## Overview
+## Metrics Calculated
 
-Day 4 focused on evaluating mutual fund performance using return, risk, and benchmark-based analytics. Multiple performance metrics were computed for all 40 mutual fund schemes to identify high-performing funds and rank them using a composite scorecard.
+### Return Metrics
 
-## Objectives
+* Daily Returns
+* CAGR
 
-* Calculate daily returns from NAV history
-* Compute CAGR for mutual fund schemes
-* Evaluate risk-adjusted performance using Sharpe Ratio
-* Measure downside risk using Sortino Ratio
-* Calculate Alpha and Beta against benchmark indices
-* Analyze Maximum Drawdown
-* Build a Fund Scorecard for ranking schemes
-* Compare top funds against benchmark indices
+### Risk Metrics
 
-## Datasets Used
+* Standard Deviation
+* Maximum Drawdown
 
-* 02_nav_history.csv
-* 07_scheme_performance.csv
-* 10_benchmark_indices.csv
+### Risk Adjusted Metrics
 
-## Analytics Performed
-
-### Daily Returns
-
-Calculated daily percentage returns for all mutual fund schemes using NAV data.
-
-Formula:
-daily_return = (NAV_t / NAV_t-1) - 1
-
-### CAGR
-
-Computed annualized growth rates across fund history.
-
-Formula:
-CAGR = (Ending NAV / Beginning NAV)^(1/n) - 1
-
-### Sharpe Ratio
-
-Measured risk-adjusted returns using a 6.5% risk-free rate.
-
-Formula:
-Sharpe Ratio = (Rp - Rf) / Std(Rp) × √252
-
-### Sortino Ratio
-
-Evaluated returns relative to downside volatility.
-
-Formula:
-Sortino Ratio = (Rp - Rf) / Downside Deviation × √252
-
-### Alpha & Beta
-
-Calculated using linear regression against NIFTY100 benchmark returns.
-
-Outputs:
-
+* Sharpe Ratio
+* Sortino Ratio
 * Alpha
 * Beta
 
-### Maximum Drawdown
-
-Measured the worst peak-to-trough decline for each scheme.
-
-Formula:
-Drawdown = NAV / Running_Max - 1
-
-### Fund Scorecard
-
-Created a composite ranking model using:
-
-* CAGR Rank
-* Sharpe Rank
-* Alpha Rank
-* Drawdown Rank
-
-## Deliverables
-
-### CSV Outputs
+## Outputs Generated
 
 * cagr_table.csv
 * sharpe_ratio.csv
@@ -289,22 +249,253 @@ Created a composite ranking model using:
 * max_drawdown.csv
 * fund_scorecard.csv
 
-### Visualizations
+## Key Findings
 
-* benchmark_comparison.png
+* Evaluated all 40 schemes.
+* Ranked funds using composite scorecard.
+* Benchmarked schemes against market indices.
+* Identified top-performing mutual funds.
 
-## Results
+---
 
-* Evaluated performance for 40 mutual fund schemes.
-* Generated risk and return rankings.
-* Built a composite scorecard for fund selection.
-* Compared top-performing funds with benchmark indices.
+# Day 5 – Advanced Analytics
 
-## Status
+## Historical VaR & CVaR
 
-Day 4 completed successfully.
+Computed downside risk metrics for all schemes.
 
-## Author
+Output:
+
+* var_cvar_report.csv
+
+## Rolling Sharpe Ratio
+
+Generated rolling 90-day Sharpe analysis.
+
+Output:
+
+* rolling_sharpe_chart.png
+
+## Investor Cohort Analysis
+
+Grouped investors by first transaction year.
+
+Output:
+
+* cohort_analysis.csv
+
+## SIP Continuity Analysis
+
+Identified at-risk investors based on SIP gaps.
+
+Output:
+
+* sip_continuity_report.csv
+
+## Fund Recommendation Engine
+
+Generated fund recommendations based on:
+
+* Risk Appetite
+* Sharpe Ratio
+* Risk Category
+
+Output:
+
+* recommended_funds.csv
+
+## Sector HHI Analysis
+
+Measured portfolio concentration.
+
+Output:
+
+* hhi_report.csv
+
+---
+
+# Day 6 – Dashboard Development
+
+## Dashboard Pages
+
+### Page 1 – Industry Overview
+
+* Industry AUM
+* SIP Inflows
+* Folio Count
+* AUM by AMC
+
+### Page 2 – Fund Performance
+
+* Risk vs Return
+* Fund Scorecard
+* NAV vs Benchmark
+
+### Page 3 – Investor Analytics
+
+* State Analysis
+* Age Group Analysis
+* Transaction Analysis
+
+### Page 4 – SIP & Market Trends
+
+* SIP vs Nifty
+* Category Heatmap
+* Market Trend Analysis
+
+## Features
+
+* Interactive Filters
+* Tooltips
+* Drill-down Analysis
+* Dynamic Charts
+
+---
+
+# Day 7 – Documentation & Reporting
+
+## Deliverables
+
+### Report
+
+* Final_Report.pdf
+
+### Presentation
+
+* Bluestock_MF_Presentation.pptx
+
+### Dashboard
+
+* Tableau / Power BI Dashboard
+
+### Analytics Reports
+
+* Performance Analytics
+* Advanced Analytics
+
+---
+
+# How To Run The Project
+
+## Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+## Run ETL Pipeline
+
+```bash
+python3 scripts/data_ingestion.py
+python3 scripts/data_cleaning.py
+python3 scripts/load_to_sqlite.py
+```
+
+## Run Performance Analytics
+
+```bash
+python3 scripts/day4_performance.py
+```
+
+## Run Advanced Analytics
+
+```bash
+python3 scripts/day5_var_cvar.py
+python3 scripts/day5_rolling_sharpe.py
+python3 scripts/day5_cohort_analysis.py
+python3 scripts/day5_sip_continuity.py
+python3 scripts/recommender.py
+python3 scripts/day5_hhi.py
+```
+
+## Run Complete Pipeline
+
+```bash
+python3 run_pipeline.py
+```
+
+---
+
+# Dashboard
+
+Open Tableau Workbook or Power BI Dashboard located in:
+
+dashboard/
+
+---
+
+# Key Business Findings
+
+1. Industry AUM exceeded ₹81 Lakh Crore.
+2. SIP inflows crossed ₹31,002 Crore.
+3. Mid-cap funds outperformed large-cap funds.
+4. 2024 investor cohort invested the most capital.
+5. Several investors were flagged as SIP continuity risks.
+6. High-risk funds achieved superior Sharpe ratios.
+7. Some funds showed high sector concentration.
+
+---
+
+# Deliverables
+
+## D1
+
+ETL Pipeline
+
+## D2
+
+SQLite Database
+
+## D3
+
+EDA Notebook
+
+## D4
+
+Performance Analytics
+
+## D5
+
+Interactive Dashboard
+
+## D6
+
+Advanced Analytics
+
+## D7
+
+Final Report & Presentation
+
+---
+
+# Final Submission Checklist
+
+| Deliverable           | Status |
+| --------------------- | ------ |
+| ETL Pipeline          | ✅      |
+| SQLite Database       | ✅      |
+| EDA Analysis          | ✅      |
+| Performance Analytics | ✅      |
+| Advanced Analytics    | ✅      |
+| Dashboard             | ✅      |
+| Final Report          | ✅      |
+| Presentation          | ✅      |
+| Documentation         | ✅      |
+| GitHub Repository     | ✅      |
+
+---
+
+# Version
+
+v1.0
+
+# Author
 
 Krishna Vamsi Bommireddy
-Data Analytics Capstone Project
+
+Bluestock Fintech Pvt. Ltd.
+
+Mutual Fund Analytics Platform Capstone Project
+
+June 2026
+
